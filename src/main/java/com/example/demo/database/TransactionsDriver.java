@@ -83,7 +83,7 @@ public class TransactionsDriver {
                     preparedStatement.setString(2, address);
                     break;
                 case 7:
-                    preparedStatement = connection.prepareStatement("SELECT t2.*, t1.id as 'transferId' FROM transfer t1, transactions t2 WHERE t1.a = t2.id OR t1.b = t2.id");
+                    preparedStatement = connection.prepareStatement("SELECT t2.*, t1.id as 'transferId' FROM transfer t1, transactions t2 WHERE t1.a = t2.id OR t1.b = t2.id ORDER BY t1.id");
                     break;
                 default:
                     return null;
