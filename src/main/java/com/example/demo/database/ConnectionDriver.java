@@ -27,6 +27,13 @@ public class ConnectionDriver {
     }
 
     public Connection getConnection() {
+        try {
+            if (connection.isClosed() || !connection.isValid(1000)) {
+                connection = DriverManager.getConnection(DatabaseConstants.DB_URL, DatabaseConstants.USER, DatabaseConstants.PASS);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return connection;
     }
 }
