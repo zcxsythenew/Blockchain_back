@@ -1,6 +1,5 @@
 package com.example.demo.database;
 import com.example.demo.constants.DatabaseConstants;
-import javafx.css.converter.LadderConverter;
 import org.jetbrains.annotations.Nullable;
 
 import java.sql.*;
