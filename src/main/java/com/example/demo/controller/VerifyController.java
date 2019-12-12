@@ -169,9 +169,11 @@ public class VerifyController {
             TransactionReceipt receipt = money.TransferTwoReceipts(BigInteger.valueOf(a), BigInteger.valueOf(b)).send();
             List<ResultEntity> results = TransactionsController.GetResult(receipt);
             SetMessageFromResults(msg, results);
-            BigInteger transferId = (BigInteger) results.get(1).getData();
-            if (!TransactionsController.UpdateTransferById(money, transferId, true)) {
-                msg.setMessage("Database error");
+            if ((boolean) results.get(0).getData()) {
+                BigInteger transferId = (BigInteger) results.get(1).getData();
+                if (!TransactionsController.UpdateTransferById(money, transferId, true)) {
+                    msg.setMessage("Database error");
+                }
             }
         } catch (Exception ex) {
             msg.setMessage(ex.getMessage());
